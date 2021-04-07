@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta http-equiv="content-style-type" content="text/css" />
+<meta http-equiv="content-script-type" content="text/javascript" />
+<link rel="shortcut icon" type="image/vnd.microsoft.ico" href="https://www.fnet.bosai.go.jp/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="https://www.fnet.bosai.go.jp/css/fnet.css" media="all" />
+<script type="text/javascript" src="https://www.fnet.bosai.go.jp/js/fnet.js" charset="euc-jp"></script>
+<link rel="stylesheet" type="text/css" href="https://www.fnet.bosai.go.jp/js/jQuery/lightbox/0.50/css/jquery.lightbox-0.5.css" media="screen" />
+<script type="text/javascript" src="https://www.fnet.bosai.go.jp/js/jQuery/lib/jquery-1.11.3.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="https://www.fnet.bosai.go.jp/js/jQuery/lightbox/0.50/js/jquery.lightbox-0.5.js" charset="utf-8"></script>
+<script type="text/javascript">
+$(function(){
+    $('#gallery1 a').lightBox();
+    $('#gallery2 a').lightBox();
+});
+</script>
+<script type="text/javascript" charset="euc-jp">
+<!--
+var loadImages = new Array(10);
+loadImages[0] = new Image();
+loadImages[0].src = '/image/header/fnet_header_mn11_mn05_en.png';
+loadImages[1] = new Image();
+loadImages[1].src = '/image/header/fnet_header_mn11_mn09_en.png';
+loadImages[2] = new Image();
+loadImages[2].src = '/image/header/fnet_header_mn11_mn10_en.png';
+loadImages[3] = new Image();
+loadImages[3].src = '/image/header/fnet_header_mn11_mn03_en.png';
+loadImages[4] = new Image();
+loadImages[4].src = '/image/header/fnet_header_mn11_mn08_en.png';
+loadImages[5] = new Image();
+loadImages[5].src = '/image/header/fnet_header_mn11_mn01_en.png';
+loadImages[6] = new Image();
+loadImages[6].src = '/image/header/fnet_header_mn11_mn04_en.png';
+loadImages[7] = new Image();
+loadImages[7].src = '/image/header/fnet_header_mn11_mn06_en.png';
+loadImages[8] = new Image();
+loadImages[8].src = '/image/header/fnet_header_mn11_en.png';
+loadImages[9] = new Image();
+loadImages[9].src = '/image/header/fnet_header_mn11_mn02_en.png';
+loadImages[10] = new Image();
+loadImages[10].src = '/image/header/fnet_header_mn11_mn11_en.png';
+//-->
+</script>
+<script type="text/javascript" src="/js/jQuery/lib/jquery-1.11.3.js" charset="euc-jp"></script>
+<script type="text/javascript" src="/js/jQuery/plugins/jquery.balloon.js" charset="euc-jp"></script>
+<script type="text/javascript"  charset="euc-jp">
+$(function() {
+    $('.help').balloon({position:'right', css:{color:'#000', fontSize:'12px'}});
+    $("select[name='e_year']").focus(function() {
+       timeChecked();
+    });
+    $("select[name='e_month']").focus(function() {
+       timeChecked();
+    });
+    $("select[name='e_day']").focus(function() {
+       timeChecked();
+    });
+    $("select[name='e_hour']").focus(function() {
+       timeChecked();
+    });
+    $("select[name='e_min']").focus(function() {
+       timeChecked();
+    });
+    $("select[name='e_sec']").focus(function() {
+       timeChecked();
+    });
+    $('#sec').focus(function() {
+       $('#duration').attr('checked',true);
+    });
+});
+function timeChecked() {
+   $('#time').attr('checked',true);
+}
+function dataRequest() {
+   //$('#server').val(server);
+   $('form').submit();
+}
+</script>
+<title>Retrieval of Waveforms</title>
+</head>
+<body>
+<form name="dataget" action="./cgi-bin/dataget.cgi" method="post" target="_blank">
+
+<table class="head">
+<tr class="head_bg"><td>
+<img src="/image/header/fnet_header_mn11_en.png" name="menubar" id="header_img" alt="" title="" usemap="#FNET_HEADER" />
+<map name="FNET_HEADER">
+<area shape="rect" coords="276,3,346,15"  href="/?LANG=en" target="_top">
+<area shape="rect" coords="355,3,490,15"  href="/faq/?LANG=en" target="_top">
+<area shape="rect" coords="496,3,600,15"  href="https://hinetwww11.bosai.go.jp/nied/registration/?LANG=en" target="_blank">
+<area shape="rect" coords="640,3,673,15"  href="http://www.bosai.go.jp/e/" target="_blank">
+<area shape="rect" coords="683,3,749,15"  href="/auth/dataget/?LANG=ja" target="_top">
+<area shape="rect" coords="260,23,349,43" href="/about_us/?LANG=en" alt="What is F-net" target="_top" onmouseover="overImg('mn11','mn01','en')" onmouseout="outImg('mn11','en')">
+<area shape="rect" coords="360,23,444,43" href="/st_info/?LANG=en" alt="Station Information" target="_top" onmouseover="overImg('mn11','mn02','en')" onmouseout="outImg('mn11','en')">
+<area shape="rect" coords="451,23,552,43" href="/waveform/?LANG=en" alt="Waveforms" target="_top" onmouseover="overImg('mn11','mn03','en')" onmouseout="outImg('mn11','en')">
+<area shape="rect" coords="534,23,629,43" href="/access/?LANG=en" alt="Access Count" target="_top" onmouseover="overImg('mn11','mn05','en')" onmouseout="outImg('mn11','en')">
+<area shape="rect" coords="637,23,748,43" href="/news_archive/?LANG=en" alt="Renewal History" target="_top" onmouseover="overImg('mn11','mn06','en')" onmouseout="outImg('mn11','en')">
+<area shape="rect" coords="214,47,266,67" href="http://www.hinet.bosai.go.jp/topics/?LANG=en" alt="Topics" target="_blank" onmouseover="overImg('mn11','mn04','en')" onmouseout="outImg('mn11','en')">
+<area shape="rect" coords="273,47,387,67" href="/event/joho.php?LANG=en" alt="Moment Tensors" target="_top" onmouseover="overImg('mn11','mn08','en')" onmouseout="outImg('mn11','en')">
+<area shape="rect" coords="396,47,542,67" href="/event/search.php?LANG=en" alt="Search for Mechanism" target="_top" onmouseover="overImg('mn11','mn09','en')" onmouseout="outImg('mn11','en')">
+<area shape="rect" coords="552,47,589,67" href="/faq/?LANG=en" alt="FAQ" target="_top" onmouseover="overImg('mn11','mn10','en')" onmouseout="outImg('mn11','en')">
+<area shape="rect" coords="596,47,748,67" href="/auth/dataget/?LANG=en" alt="Retrieval of Waveforms" target="_top" onmouseover="overImg('mn11','mn11','en')" onmouseout="outImg('mn11','en')">
+</map>
+</td></tr>
+
+<tr><td>
+   <table border="0" cellpadding="3" cellspaing="3" width="100%">
+   <tr><td class="st_info3">
+   <a href="./?LANG=en" target="_top">&#9608; Retrieval of Waveforms</a>
+&emsp;
+<a href="../noise_spectral/?LANG=en" target="_top">&#9608; Background Noise</a>
+&emsp;
+<a href="../sensor_property/?LANG=en" target="_top">&#9608; Sesimometer Response</a>
+   </td></tr>
+   </table>
+</td></tr>
+
+
+<tr><td class="dataget_td">
+
+<br /><span class="dataget_title">Retrieval of Waveforms</span><br /><br />
+<div class="dataget_label">&#9608; Select data format.</div>
+<ul>
+<fieldset style="width:738px; padding:0px; border:0 solid;">
+<legend style="width:0px; overflow:hidden; padding:0px; position:absolute;">データフォーマット</legend>
+<input type="radio" id="MSEED" title="format" name="format" value="MSEED" checked /><label for="MSEED">MSEED</label>
+<input type="radio" id="SEED" title="format" name="format" value="SEED" /><label for="SEED">SEED</label>
+<input type="radio" id="SAC" title="format" name="format" value="SAC" /><label for="SAC">SAC</label>
+<input type="radio" id="TEXT" title="format" name="format" value="TEXT" /><label for="TEXT">TEXT</label>
+&emsp;
+<a href="https://www.fnet.bosai.go.jp/faq/?LANG=en#N03" target="_blank">TEXT Format.</a>
+</fieldset>
+</ul>
+<div class="dataget_label">&#9608; Select archive style.</div>
+<ul>
+<fieldset style="width:738px; padding:0px; border:0 solid;">
+<legend style="width:0px; overflow:hidden; padding:0px; position:absolute;">データアーカイブ形式</legend>
+<input type="radio" id="tar+compress" title="archive" name="archive" value="tar+compress" /><label for="tar+compress">tar+compress</label>
+<input type="radio" id="tar+gzip" title="archive" name="archive" value="tar+gzip" /><label for="tar+gzip">tar+gzip</label>
+<input type="radio" id="tar+bz2" title="archive" name="archive" value="tar+bz2" /><label for="tar+bz2">tar+bz2</label>
+<input type="radio" id="tar" title="archive" name="archive" value="tar" /><label for="tar">tar</label>
+<input type="radio" id="zip" title="archive" name="archive" value="zip" checked /><label for="zip">zip</label>
+<input type="radio" id="lha" title="archive" name="archive" value="lha" /><label for="lha">lha</label>
+</fieldset>
+</ul>
+<div class="dataget_label">&#9608; Select stations.</div>
+<ul class="field">
+<fieldset style="width:738px; padding:0px; border:0 solid;">
+<legend style="width:0px; overflow:hidden; padding:0px; position:absolute;">観測点</legend>
+<span class="dataget_code"><input type="checkbox" id="ALL_s" title="station" name="station" value="ALL" /><label for="ALL_s">ALL</label></span><br />
+<span class="dataget_code"><input type="checkbox" id="ABU" title="station" name="station" value="ABU" /><label for="ABU">ABU</label></span>
+<span class="dataget_code"><input type="checkbox" id="ADM" title="station" name="station" value="ADM" /><label for="ADM">ADM</label></span>
+<span class="dataget_code"><input type="checkbox" id="AMM" title="station" name="station" value="AMM" /><label for="AMM">AMM</label></span>
+<span class="dataget_code"><input type="checkbox" id="AOG" title="station" name="station" value="AOG" /><label for="AOG">AOG</label></span>
+<span class="dataget_code"><input type="checkbox" id="ASI" title="station" name="station" value="ASI" /><label for="ASI">ASI</label></span>
+<span class="dataget_code"><input type="checkbox" id="CHS" title="station" name="station" value="CHS" /><label for="CHS">CHS</label></span>
+<span class="dataget_code"><input type="checkbox" id="FUJ" title="station" name="station" value="FUJ" /><label for="FUJ">FUJ</label></span>
+<span class="dataget_code"><input type="checkbox" id="FUK" title="station" name="station" value="FUK" /><label for="FUK">FUK</label></span>
+<span class="dataget_code"><input type="checkbox" id="GJM" title="station" name="station" value="GJM" /><label for="GJM">GJM</label></span>
+<span class="dataget_code"><input type="checkbox" id="HID" title="station" name="station" value="HID" /><label for="HID">HID</label></span>
+<span class="dataget_code"><input type="checkbox" id="HJO" title="station" name="station" value="HJO" /><label for="HJO">HJO</label></span>
+<br />
+<span class="dataget_code"><input type="checkbox" id="HKW" title="station" name="station" value="HKW" /><label for="HKW">HKW</label></span>
+<span class="dataget_code"><input type="checkbox" id="HRO" title="station" name="station" value="HRO" /><label for="HRO">HRO</label></span>
+<span class="dataget_code"><input type="checkbox" id="HSS" title="station" name="station" value="HSS" /><label for="HSS">HSS</label></span>
+<span class="dataget_code"><input type="checkbox" id="IGK" title="station" name="station" value="IGK" /><label for="IGK">IGK</label></span>
+<span class="dataget_code"><input type="checkbox" id="IMG" title="station" name="station" value="IMG" /><label for="IMG">IMG</label></span>
+<span class="dataget_code"><input type="checkbox" id="INN" title="station" name="station" value="INN" /><label for="INN">INN</label></span>
+<span class="dataget_code"><input type="checkbox" id="ISI" title="station" name="station" value="ISI" /><label for="ISI">ISI</label></span>
+<span class="dataget_code"><input type="checkbox" id="IWT" title="station" name="station" value="IWT" /><label for="IWT">IWT</label></span>
+<span class="dataget_code"><input type="checkbox" id="IYG" title="station" name="station" value="IYG" /><label for="IYG">IYG</label></span>
+<span class="dataget_code"><input type="checkbox" id="IZH" title="station" name="station" value="IZH" /><label for="IZH">IZH</label></span>
+<span class="dataget_code"><input type="checkbox" id="JIZ" title="station" name="station" value="JIZ" /><label for="JIZ">JIZ</label></span>
+<br />
+<span class="dataget_code"><input type="checkbox" id="KFU" title="station" name="station" value="KFU" /><label for="KFU">KFU</label></span>
+<span class="dataget_code"><input type="checkbox" id="KGM" title="station" name="station" value="KGM" /><label for="KGM">KGM</label></span>
+<span class="dataget_code"><input type="checkbox" id="KIS" title="station" name="station" value="KIS" /><label for="KIS">KIS</label></span>
+<span class="dataget_code"><input type="checkbox" id="KMT" title="station" name="station" value="KMT" /><label for="KMT">KMT</label></span>
+<span class="dataget_code"><input type="checkbox" id="KMU" title="station" name="station" value="KMU" /><label for="KMU">KMU</label></span>
+<span class="dataget_code"><input type="checkbox" id="KNM" title="station" name="station" value="KNM" /><label for="KNM">KNM</label></span>
+<span class="dataget_code"><input type="checkbox" id="KNP" title="station" name="station" value="KNP" /><label for="KNP">KNP</label></span>
+<span class="dataget_code"><input type="checkbox" id="KNY" title="station" name="station" value="KNY" /><label for="KNY">KNY</label></span>
+<span class="dataget_code"><input type="checkbox" id="KSK" title="station" name="station" value="KSK" /><label for="KSK">KSK</label></span>
+<span class="dataget_code"><input type="checkbox" id="KSN" title="station" name="station" value="KSN" /><label for="KSN">KSN</label></span>
+<span class="dataget_code"><input type="checkbox" id="KSR" title="station" name="station" value="KSR" /><label for="KSR">KSR</label></span>
+<br />
+<span class="dataget_code"><input type="checkbox" id="KYK" title="station" name="station" value="KYK" /><label for="KYK">KYK</label></span>
+<span class="dataget_code"><input type="checkbox" id="KZK" title="station" name="station" value="KZK" /><label for="KZK">KZK</label></span>
+<span class="dataget_code"><input type="checkbox" id="KZS" title="station" name="station" value="KZS" /><label for="KZS">KZS</label></span>
+<span class="dataget_code"><input type="checkbox" id="MMA" title="station" name="station" value="MMA" /><label for="MMA">MMA</label></span>
+<span class="dataget_code"><input type="checkbox" id="NAA" title="station" name="station" value="NAA" /><label for="NAA">NAA</label></span>
+<span class="dataget_code"><input type="checkbox" id="NKG" title="station" name="station" value="NKG" /><label for="NKG">NKG</label></span>
+<span class="dataget_code"><input type="checkbox" id="NMR" title="station" name="station" value="NMR" /><label for="NMR">NMR</label></span>
+<span class="dataget_code"><input type="checkbox" id="NOK" title="station" name="station" value="NOK" /><label for="NOK">NOK</label></span>
+<span class="dataget_code"><input type="checkbox" id="NOP" title="station" name="station" value="NOP" /><label for="NOP">NOP</label></span>
+<span class="dataget_code"><input type="checkbox" id="NRW" title="station" name="station" value="NRW" /><label for="NRW">NRW</label></span>
+<span class="dataget_code"><input type="checkbox" id="NSK" title="station" name="station" value="NSK" /><label for="NSK">NSK</label></span>
+<br />
+<span class="dataget_code"><input type="checkbox" id="OHS" title="station" name="station" value="OHS" /><label for="OHS">OHS</label></span>
+<span class="dataget_code"><input type="checkbox" id="OKW" title="station" name="station" value="OKW" /><label for="OKW">OKW</label></span>
+<span class="dataget_code"><input type="checkbox" id="ONS" title="station" name="station" value="ONS" /><label for="ONS">ONS</label></span>
+<span class="dataget_code"><input type="checkbox" id="OOW" title="station" name="station" value="OOW" /><label for="OOW">OOW</label></span>
+<span class="dataget_code"><input type="checkbox" id="OSW" title="station" name="station" value="OSW" /><label for="OSW">OSW</label></span>
+<span class="dataget_code"><input type="checkbox" id="SAG" title="station" name="station" value="SAG" /><label for="SAG">SAG</label></span>
+<span class="dataget_code"><input type="checkbox" id="SBR" title="station" name="station" value="SBR" /><label for="SBR">SBR</label></span>
+<span class="dataget_code"><input type="checkbox" id="SBT" title="station" name="station" value="SBT" /><label for="SBT">SBT</label></span>
+<span class="dataget_code"><input type="checkbox" id="SGN" title="station" name="station" value="SGN" /><label for="SGN">SGN</label></span>
+<span class="dataget_code"><input type="checkbox" id="SHR" title="station" name="station" value="SHR" /><label for="SHR">SHR</label></span>
+<span class="dataget_code"><input type="checkbox" id="SIB" title="station" name="station" value="SIB" /><label for="SIB">SIB</label></span>
+<br />
+<span class="dataget_code"><input type="checkbox" id="SMZ" title="station" name="station" value="SMZ" /><label for="SMZ">SMZ</label></span>
+<span class="dataget_code"><input type="checkbox" id="SRN" title="station" name="station" value="SRN" /><label for="SRN">SRN</label></span>
+<span class="dataget_code"><input type="checkbox" id="STM" title="station" name="station" value="STM" /><label for="STM">STM</label></span>
+<span class="dataget_code"><input type="checkbox" id="TAS" title="station" name="station" value="TAS" /><label for="TAS">TAS</label></span>
+<span class="dataget_code"><input type="checkbox" id="TGA" title="station" name="station" value="TGA" /><label for="TGA">TGA</label></span>
+<span class="dataget_code"><input type="checkbox" id="TGW" title="station" name="station" value="TGW" /><label for="TGW">TGW</label></span>
+<span class="dataget_code"><input type="checkbox" id="TKA" title="station" name="station" value="TKA" /><label for="TKA">TKA</label></span>
+<span class="dataget_code"><input type="checkbox" id="TKD" title="station" name="station" value="TKD" /><label for="TKD">TKD</label></span>
+<span class="dataget_code"><input type="checkbox" id="TKO" title="station" name="station" value="TKO" /><label for="TKO">TKO</label></span>
+<span class="dataget_code"><input type="checkbox" id="TMC" title="station" name="station" value="TMC" /><label for="TMC">TMC</label></span>
+<span class="dataget_code"><input type="checkbox" id="TMR" title="station" name="station" value="TMR" /><label for="TMR">TMR</label></span>
+<br />
+<span class="dataget_code"><input type="checkbox" id="TNK" title="station" name="station" value="TNK" /><label for="TNK">TNK</label></span>
+<span class="dataget_code"><input type="checkbox" id="TNR" title="station" name="station" value="TNR" /><label for="TNR">TNR</label></span>
+<span class="dataget_code"><input type="checkbox" id="TSA" title="station" name="station" value="TSA" /><label for="TSA">TSA</label></span>
+<span class="dataget_code"><input type="checkbox" id="TSK" title="station" name="station" value="TSK" /><label for="TSK">TSK</label></span>
+<span class="dataget_code"><input type="checkbox" id="TTO" title="station" name="station" value="TTO" /><label for="TTO">TTO</label></span>
+<span class="dataget_code"><input type="checkbox" id="TYM" title="station" name="station" value="TYM" /><label for="TYM">TYM</label></span>
+<span class="dataget_code"><input type="checkbox" id="TYS" title="station" name="station" value="TYS" /><label for="TYS">TYS</label></span>
+<span class="dataget_code"><input type="checkbox" id="UMJ" title="station" name="station" value="UMJ" /><label for="UMJ">UMJ</label></span>
+<span class="dataget_code"><input type="checkbox" id="URH" title="station" name="station" value="URH" /><label for="URH">URH</label></span>
+<span class="dataget_code"><input type="checkbox" id="WJM" title="station" name="station" value="WJM" /><label for="WJM">WJM</label></span>
+<span class="dataget_code"><input type="checkbox" id="WTR" title="station" name="station" value="WTR" /><label for="WTR">WTR</label></span>
+<br />
+<span class="dataget_code"><input type="checkbox" id="YAS" title="station" name="station" value="YAS" /><label for="YAS">YAS</label></span>
+<span class="dataget_code"><input type="checkbox" id="YMZ" title="station" name="station" value="YMZ" /><label for="YMZ">YMZ</label></span>
+<span class="dataget_code"><input type="checkbox" id="YNG" title="station" name="station" value="YNG" /><label for="YNG">YNG</label></span>
+<span class="dataget_code"><input type="checkbox" id="YSI" title="station" name="station" value="YSI" /><label for="YSI">YSI</label></span>
+<span class="dataget_code"><input type="checkbox" id="YTY" title="station" name="station" value="YTY" /><label for="YTY">YTY</label></span>
+<span class="dataget_code"><input type="checkbox" id="YZK" title="station" name="station" value="YZK" /><label for="YZK">YZK</label></span>
+<span class="dataget_code"><input type="checkbox" id="ZMM" title="station" name="station" value="ZMM" /><label for="ZMM">ZMM</label></span>
+</ul>
+</fieldset>
+<div class="dataget_label">&#9608; Select components.
+&emsp;&emsp;&emsp;
+<a href="javascript:void(0)" class="help" title="<h2>Component names consists of three characters.</h2>
+The first character [HBLVU] represents the sampling interval of data, the second [HL] stands for the
+<br />
+sensor identification and the third [ZNE] shows the direction and polarity.
+<ul>
+[Sampling interval]
+<br />
+&emsp; H -&gt; 80Hz, B -&gt; 20Hz, L -&gt; 1Hz, V -&gt; 0.1Hz, U -&gt; 0.01Hz
+<br />
+[Sensor identification]
+<br />
+&emsp; H -&gt; Broadband seismometer, L -&gt; Strong motion velocitymeter
+<br />
+[Direction and polarity]
+<br />
+&emsp; Z -&gt; Up-Down (up positive), N -&gt; North-South (north positive), E -&gt; East-West (east positive)
+</ul>">Rules for Component Description</a>
+<ul>
+Notice: We have supplied only BH&#63;, BL&#63;, LH&#63;, and LL&#63; data,
+since the recorder system replacement.
+<br />
+The replacement finished on June, 2003.
+&nbsp;&nbsp;
+Please see <a href="/notice/Notice.20041206.php?LANG=en" target="_blank">this page</a> for details.
+</ul></div>
+<ul>
+<fieldset style="width:738px; padding:0px; border:0 solid;">
+<legend style="width:0px; overflow:hidden; padding:0px; position:absolute;">成分</legend>
+<span class="dataget_code"><input type="checkbox" id="ALL_c" title="component" name="component" value="ALL" /><label for="ALL_c">ALL</label></span><br />
+<span class="dataget_code"><input type="checkbox" id="HXX" title="component" name="component" value="HXX" /><label for="HXX">H??</label></span>
+<span class="dataget_code"><input type="checkbox" id="HHX" title="component" name="component" value="HHX" /><label for="HHX">HH?</label></span>
+<span class="dataget_code"><input type="checkbox" id="HLX" title="component" name="component" value="HLX" /><label for="HLX">HL?</label></span>
+<span class="dataget_code"><input type="checkbox" id="HHZ" title="component" name="component" value="HHZ" /><label for="HHZ">HHZ</label></span>
+<span class="dataget_code"><input type="checkbox" id="HHN" title="component" name="component" value="HHN" /><label for="HHN">HHN</label></span>
+<span class="dataget_code"><input type="checkbox" id="HHE" title="component" name="component" value="HHE" /><label for="HHE">HHE</label></span>
+<span class="dataget_code"><input type="checkbox" id="HLZ" title="component" name="component" value="HLZ" /><label for="HLZ">HLZ</label></span>
+<span class="dataget_code"><input type="checkbox" id="HLN" title="component" name="component" value="HLN" /><label for="HLN">HLN</label></span>
+<span class="dataget_code"><input type="checkbox" id="HLE" title="component" name="component" value="HLE" /><label for="HLE">HLE</label></span>
+<span class="dataget_code"><input type="checkbox" id="BXX" title="component" name="component" value="BXX" /><label for="BXX">B??</label></span>
+<span class="dataget_code"><input type="checkbox" id="BHX" title="component" name="component" value="BHX" checked /><label for="BHX">BH?</label></span>
+<br />
+<span class="dataget_code"><input type="checkbox" id="BLX" title="component" name="component" value="BLX" /><label for="BLX">BL?</label></span>
+<span class="dataget_code"><input type="checkbox" id="BHZ" title="component" name="component" value="BHZ" /><label for="BHZ">BHZ</label></span>
+<span class="dataget_code"><input type="checkbox" id="BHN" title="component" name="component" value="BHN" /><label for="BHN">BHN</label></span>
+<span class="dataget_code"><input type="checkbox" id="BHE" title="component" name="component" value="BHE" /><label for="BHE">BHE</label></span>
+<span class="dataget_code"><input type="checkbox" id="BLZ" title="component" name="component" value="BLZ" /><label for="BLZ">BLZ</label></span>
+<span class="dataget_code"><input type="checkbox" id="BLN" title="component" name="component" value="BLN" /><label for="BLN">BLN</label></span>
+<span class="dataget_code"><input type="checkbox" id="BLE" title="component" name="component" value="BLE" /><label for="BLE">BLE</label></span>
+<span class="dataget_code"><input type="checkbox" id="LXX" title="component" name="component" value="LXX" /><label for="LXX">L??</label></span>
+<span class="dataget_code"><input type="checkbox" id="LHX" title="component" name="component" value="LHX" /><label for="LHX">LH?</label></span>
+<span class="dataget_code"><input type="checkbox" id="LLX" title="component" name="component" value="LLX" /><label for="LLX">LL?</label></span>
+<span class="dataget_code"><input type="checkbox" id="LHZ" title="component" name="component" value="LHZ" /><label for="LHZ">LHZ</label></span>
+<br />
+<span class="dataget_code"><input type="checkbox" id="LHN" title="component" name="component" value="LHN" /><label for="LHN">LHN</label></span>
+<span class="dataget_code"><input type="checkbox" id="LHE" title="component" name="component" value="LHE" /><label for="LHE">LHE</label></span>
+<span class="dataget_code"><input type="checkbox" id="LLZ" title="component" name="component" value="LLZ" /><label for="LLZ">LLZ</label></span>
+<span class="dataget_code"><input type="checkbox" id="LLN" title="component" name="component" value="LLN" /><label for="LLN">LLN</label></span>
+<span class="dataget_code"><input type="checkbox" id="LLE" title="component" name="component" value="LLE" /><label for="LLE">LLE</label></span>
+<span class="dataget_code"><input type="checkbox" id="VHX" title="component" name="component" value="VHX" /><label for="VHX">VH?</label></span>
+<span class="dataget_code"><input type="checkbox" id="VHZ" title="component" name="component" value="VHZ" /><label for="VHZ">VHZ</label></span>
+<span class="dataget_code"><input type="checkbox" id="VHN" title="component" name="component" value="VHN" /><label for="VHN">VHN</label></span>
+<span class="dataget_code"><input type="checkbox" id="VHE" title="component" name="component" value="VHE" /><label for="VHE">VHE</label></span>
+<span class="dataget_code"><input type="checkbox" id="UHX" title="component" name="component" value="UHX" /><label for="UHX">UH?</label></span>
+<span class="dataget_code"><input type="checkbox" id="UHZ" title="component" name="component" value="UHZ" /><label for="UHZ">UHZ</label></span>
+<br />
+<span class="dataget_code"><input type="checkbox" id="UHN" title="component" name="component" value="UHN" /><label for="UHN">UHN</label></span>
+<span class="dataget_code"><input type="checkbox" id="UHE" title="component" name="component" value="UHE" /><label for="UHE">UHE</label></span>
+</fieldset>
+</ul>
+<div class="dataget_label">&#9608; Select Time Zone.</div>
+<ul>
+<fieldset style="width:738px; padding:0px; border:0 solid;">
+<legend style="width:0px; overflow:hidden; padding:0px; position:absolute;">タイムゾーン</legend>
+<input type="radio" id="JST" title="time" name="time" value="JST" /><label for="JST">JST</label>
+<input type="radio" id="UT" title="time" name="time" value="UT" checked /><label for="UT">UT</label>
+</fieldset>
+</ul>
+<div class="dataget_label">&#9608; Choose time windows.&emsp; The latest available data is from about two days ago.</div>
+<ul>
+<fieldset style="width:738px; padding:0px; border:0 solid;">
+<legend style="width:0px; overflow:hidden; padding:0px; position:absolute;">データ期間</legend>
+start time :
+<select title="s_year" name="s_year">
+<option value="2020">2020</option>
+<option value="2019">2019</option>
+<option value="2018">2018</option>
+<option value="2017">2017</option>
+<option value="2016">2016</option>
+<option value="2015">2015</option>
+<option value="2014">2014</option>
+<option value="2013">2013</option>
+<option value="2012">2012</option>
+<option value="2011">2011</option>
+<option value="2010">2010</option>
+<option value="2009">2009</option>
+<option value="2008">2008</option>
+<option value="2007">2007</option>
+<option value="2006">2006</option>
+<option value="2005">2005</option>
+<option value="2004">2004</option>
+<option value="2003">2003</option>
+<option value="2002">2002</option>
+<option value="2001">2001</option>
+<option value="2000">2000</option>
+<option value="1999">1999</option>
+<option value="1998">1998</option>
+<option value="1997">1997</option>
+<option value="1996">1996</option>
+<option value="1995">1995</option>
+</select>
+ &nbsp;
+<select title="s_month" name="s_month">
+<option value="01">01</option>
+<option value="02">02</option>
+<option value="03">03</option>
+<option value="04">04</option>
+<option value="05">05</option>
+<option value="06">06</option>
+<option value="07">07</option>
+<option value="08">08</option>
+<option value="09">09</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+</select>
+ &nbsp;
+<select title="s_day" name="s_day">
+<option value="01">01</option>
+<option value="02">02</option>
+<option value="03">03</option>
+<option value="04">04</option>
+<option value="05">05</option>
+<option value="06">06</option>
+<option value="07">07</option>
+<option value="08">08</option>
+<option value="09">09</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+<option value="13">13</option>
+<option value="14">14</option>
+<option value="15">15</option>
+<option value="16">16</option>
+<option value="17">17</option>
+<option value="18">18</option>
+<option value="19">19</option>
+<option value="20">20</option>
+<option value="21">21</option>
+<option value="22">22</option>
+<option value="23">23</option>
+<option value="24">24</option>
+<option value="25">25</option>
+<option value="26">26</option>
+<option value="27">27</option>
+<option value="28">28</option>
+<option value="29">29</option>
+<option value="30">30</option>
+<option value="31">31</option>
+</select>
+ &nbsp;
+<select title="s_hour" name="s_hour">
+<option value="00" selected>00</option>
+<option value="01">01</option>
+<option value="02">02</option>
+<option value="03">03</option>
+<option value="04">04</option>
+<option value="05">05</option>
+<option value="06">06</option>
+<option value="07">07</option>
+<option value="08">08</option>
+<option value="09">09</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+<option value="13">13</option>
+<option value="14">14</option>
+<option value="15">15</option>
+<option value="16">16</option>
+<option value="17">17</option>
+<option value="18">18</option>
+<option value="19">19</option>
+<option value="20">20</option>
+<option value="21">21</option>
+<option value="22">22</option>
+<option value="23">23</option>
+</select>
+ &nbsp;
+<select title="s_min" name="s_min">
+<option value="00" selected>00</option>
+<option value="01">01</option>
+<option value="02">02</option>
+<option value="03">03</option>
+<option value="04">04</option>
+<option value="05">05</option>
+<option value="06">06</option>
+<option value="07">07</option>
+<option value="08">08</option>
+<option value="09">09</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+<option value="13">13</option>
+<option value="14">14</option>
+<option value="15">15</option>
+<option value="16">16</option>
+<option value="17">17</option>
+<option value="18">18</option>
+<option value="19">19</option>
+<option value="20">20</option>
+<option value="21">21</option>
+<option value="22">22</option>
+<option value="23">23</option>
+<option value="24">24</option>
+<option value="25">25</option>
+<option value="26">26</option>
+<option value="27">27</option>
+<option value="28">28</option>
+<option value="29">29</option>
+<option value="30">30</option>
+<option value="31">31</option>
+<option value="32">32</option>
+<option value="33">33</option>
+<option value="34">34</option>
+<option value="35">35</option>
+<option value="36">36</option>
+<option value="37">37</option>
+<option value="38">38</option>
+<option value="39">39</option>
+<option value="40">40</option>
+<option value="41">41</option>
+<option value="42">42</option>
+<option value="43">43</option>
+<option value="44">44</option>
+<option value="45">45</option>
+<option value="46">46</option>
+<option value="47">47</option>
+<option value="48">48</option>
+<option value="49">49</option>
+<option value="50">50</option>
+<option value="51">51</option>
+<option value="52">52</option>
+<option value="53">53</option>
+<option value="54">54</option>
+<option value="55">55</option>
+<option value="56">56</option>
+<option value="57">57</option>
+<option value="58">58</option>
+<option value="59">59</option>
+</select>
+ &nbsp;
+<select title="s_sec" name="s_sec">
+<option value="00" selected>00</option>
+<option value="01">01</option>
+<option value="02">02</option>
+<option value="03">03</option>
+<option value="04">04</option>
+<option value="05">05</option>
+<option value="06">06</option>
+<option value="07">07</option>
+<option value="08">08</option>
+<option value="09">09</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+<option value="13">13</option>
+<option value="14">14</option>
+<option value="15">15</option>
+<option value="16">16</option>
+<option value="17">17</option>
+<option value="18">18</option>
+<option value="19">19</option>
+<option value="20">20</option>
+<option value="21">21</option>
+<option value="22">22</option>
+<option value="23">23</option>
+<option value="24">24</option>
+<option value="25">25</option>
+<option value="26">26</option>
+<option value="27">27</option>
+<option value="28">28</option>
+<option value="29">29</option>
+<option value="30">30</option>
+<option value="31">31</option>
+<option value="32">32</option>
+<option value="33">33</option>
+<option value="34">34</option>
+<option value="35">35</option>
+<option value="36">36</option>
+<option value="37">37</option>
+<option value="38">38</option>
+<option value="39">39</option>
+<option value="40">40</option>
+<option value="41">41</option>
+<option value="42">42</option>
+<option value="43">43</option>
+<option value="44">44</option>
+<option value="45">45</option>
+<option value="46">46</option>
+<option value="47">47</option>
+<option value="48">48</option>
+<option value="49">49</option>
+<option value="50">50</option>
+<option value="51">51</option>
+<option value="52">52</option>
+<option value="53">53</option>
+<option value="54">54</option>
+<option value="55">55</option>
+<option value="56">56</option>
+<option value="57">57</option>
+<option value="58">58</option>
+<option value="59">59</option>
+</select>
+ &nbsp;
+<ul>
+<input type="radio" id="time" title="end" name="end" value="time" checked />
+<label for="time">end time :</label>
+<select title="e_year" name="e_year">
+<option value="2020">2020</option>
+<option value="2019">2019</option>
+<option value="2018">2018</option>
+<option value="2017">2017</option>
+<option value="2016">2016</option>
+<option value="2015">2015</option>
+<option value="2014">2014</option>
+<option value="2013">2013</option>
+<option value="2012">2012</option>
+<option value="2011">2011</option>
+<option value="2010">2010</option>
+<option value="2009">2009</option>
+<option value="2008">2008</option>
+<option value="2007">2007</option>
+<option value="2006">2006</option>
+<option value="2005">2005</option>
+<option value="2004">2004</option>
+<option value="2003">2003</option>
+<option value="2002">2002</option>
+<option value="2001">2001</option>
+<option value="2000">2000</option>
+<option value="1999">1999</option>
+<option value="1998">1998</option>
+<option value="1997">1997</option>
+<option value="1996">1996</option>
+<option value="1995">1995</option>
+</select>
+ &nbsp;
+<select title="e_month" name="e_month">
+<option value="01">01</option>
+<option value="02">02</option>
+<option value="03">03</option>
+<option value="04">04</option>
+<option value="05">05</option>
+<option value="06">06</option>
+<option value="07">07</option>
+<option value="08">08</option>
+<option value="09">09</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+</select>
+ &nbsp;
+<select title="e_day" name="e_day">
+<option value="01">01</option>
+<option value="02">02</option>
+<option value="03">03</option>
+<option value="04">04</option>
+<option value="05">05</option>
+<option value="06">06</option>
+<option value="07">07</option>
+<option value="08">08</option>
+<option value="09">09</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+<option value="13">13</option>
+<option value="14">14</option>
+<option value="15">15</option>
+<option value="16">16</option>
+<option value="17">17</option>
+<option value="18">18</option>
+<option value="19">19</option>
+<option value="20">20</option>
+<option value="21">21</option>
+<option value="22">22</option>
+<option value="23">23</option>
+<option value="24">24</option>
+<option value="25">25</option>
+<option value="26">26</option>
+<option value="27">27</option>
+<option value="28">28</option>
+<option value="29">29</option>
+<option value="30">30</option>
+<option value="31">31</option>
+</select>
+ &nbsp;
+<select title="e_hour" name="e_hour">
+<option value="00" selected>00</option>
+<option value="01">01</option>
+<option value="02">02</option>
+<option value="03">03</option>
+<option value="04">04</option>
+<option value="05">05</option>
+<option value="06">06</option>
+<option value="07">07</option>
+<option value="08">08</option>
+<option value="09">09</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+<option value="13">13</option>
+<option value="14">14</option>
+<option value="15">15</option>
+<option value="16">16</option>
+<option value="17">17</option>
+<option value="18">18</option>
+<option value="19">19</option>
+<option value="20">20</option>
+<option value="21">21</option>
+<option value="22">22</option>
+<option value="23">23</option>
+</select>
+ &nbsp;
+<select title="e_min" name="e_min">
+<option value="00" selected>00</option>
+<option value="01">01</option>
+<option value="02">02</option>
+<option value="03">03</option>
+<option value="04">04</option>
+<option value="05">05</option>
+<option value="06">06</option>
+<option value="07">07</option>
+<option value="08">08</option>
+<option value="09">09</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+<option value="13">13</option>
+<option value="14">14</option>
+<option value="15">15</option>
+<option value="16">16</option>
+<option value="17">17</option>
+<option value="18">18</option>
+<option value="19">19</option>
+<option value="20">20</option>
+<option value="21">21</option>
+<option value="22">22</option>
+<option value="23">23</option>
+<option value="24">24</option>
+<option value="25">25</option>
+<option value="26">26</option>
+<option value="27">27</option>
+<option value="28">28</option>
+<option value="29">29</option>
+<option value="30">30</option>
+<option value="31">31</option>
+<option value="32">32</option>
+<option value="33">33</option>
+<option value="34">34</option>
+<option value="35">35</option>
+<option value="36">36</option>
+<option value="37">37</option>
+<option value="38">38</option>
+<option value="39">39</option>
+<option value="40">40</option>
+<option value="41">41</option>
+<option value="42">42</option>
+<option value="43">43</option>
+<option value="44">44</option>
+<option value="45">45</option>
+<option value="46">46</option>
+<option value="47">47</option>
+<option value="48">48</option>
+<option value="49">49</option>
+<option value="50">50</option>
+<option value="51">51</option>
+<option value="52">52</option>
+<option value="53">53</option>
+<option value="54">54</option>
+<option value="55">55</option>
+<option value="56">56</option>
+<option value="57">57</option>
+<option value="58">58</option>
+<option value="59">59</option>
+</select>
+ &nbsp;
+<select title="e_sec" name="e_sec">
+<option value="00" selected>00</option>
+<option value="01">01</option>
+<option value="02">02</option>
+<option value="03">03</option>
+<option value="04">04</option>
+<option value="05">05</option>
+<option value="06">06</option>
+<option value="07">07</option>
+<option value="08">08</option>
+<option value="09">09</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+<option value="13">13</option>
+<option value="14">14</option>
+<option value="15">15</option>
+<option value="16">16</option>
+<option value="17">17</option>
+<option value="18">18</option>
+<option value="19">19</option>
+<option value="20">20</option>
+<option value="21">21</option>
+<option value="22">22</option>
+<option value="23">23</option>
+<option value="24">24</option>
+<option value="25">25</option>
+<option value="26">26</option>
+<option value="27">27</option>
+<option value="28">28</option>
+<option value="29">29</option>
+<option value="30">30</option>
+<option value="31">31</option>
+<option value="32">32</option>
+<option value="33">33</option>
+<option value="34">34</option>
+<option value="35">35</option>
+<option value="36">36</option>
+<option value="37">37</option>
+<option value="38">38</option>
+<option value="39">39</option>
+<option value="40">40</option>
+<option value="41">41</option>
+<option value="42">42</option>
+<option value="43">43</option>
+<option value="44">44</option>
+<option value="45">45</option>
+<option value="46">46</option>
+<option value="47">47</option>
+<option value="48">48</option>
+<option value="49">49</option>
+<option value="50">50</option>
+<option value="51">51</option>
+<option value="52">52</option>
+<option value="53">53</option>
+<option value="54">54</option>
+<option value="55">55</option>
+<option value="56">56</option>
+<option value="57">57</option>
+<option value="58">58</option>
+<option value="59">59</option>
+</select>
+ &nbsp;
+<br />
+<input type="radio" id="duration" title="end" name="end" value="duration" checked />
+<label for="duration">duration :</label>
+<input type="text" id="sec" title="sec" name="sec" value="300" size="10" maxlength="10" /> seconds
+</ul>
+<span class="dataget_impact"></span>
+</fieldset>
+</ul>
+<div class="dataget_label">&#9608; Command request</div>
+<ul>If you would like to make a complicated request, after selecting data format and archive style,
+please write commands in the following box.
+<br />
+You can write several commands but with one command per line.
+When you happen to specify the data both at the above selections and
+in the following box, the specifications in the box are valid.
+<br />
+If you make the above selection effective,please use a minus or a hyphen (-)
+in the corresponding argument of the command.
+<ul>
+&lt;syntax&gt;
+   <ul>
+   get [station] [component] [start_time] [end_time]
+   <br />
+   <span class="dataget_syntax">station</span> : station code (three characters)
+   <br />
+   <span class="dataget_syntax">component</span> : <a href="javascript:void(0)" class="help" title="<h2>Component names consists of three characters.</h2>
+The first character [HBLVU] represents the sampling interval of data, the second [HL] stands for the
+<br />
+sensor identification and the third [ZNE] shows the direction and polarity.
+<ul>
+[Sampling interval]
+<br />
+&emsp; H -&gt; 80Hz, B -&gt; 20Hz, L -&gt; 1Hz, V -&gt; 0.1Hz, U -&gt; 0.01Hz
+<br />
+[Sensor identification]
+<br />
+&emsp; H -&gt; Broadband seismometer, L -&gt; Strong motion velocitymeter
+<br />
+[Direction and polarity]
+<br />
+&emsp; Z -&gt; Up-Down (up positive), N -&gt; North-South (north positive), E -&gt; East-West (east positive)
+</ul>">component name</a> (three characters)
+   <br />
+   <span class="dataget_syntax">start_time</span> : start time(UT) [yyyy/mm/dd,hh:mm:ss (ss:double-digitinteger)]
+   <br />
+   <span class="dataget_syntax">end_time</span> : end time(UT) [yyyy/mm/dd,hh:mm:ss (ss:double-digit integer)]
+   </ul>
+&lt;example&gt;
+   <ul>
+   1 : get ABU BHZ 2000/01/01,00:00:00 2000/01/01,00:10:00
+   <br />
+   2 : get - BHZ 2000/01/01,00:00:00 -
+   </ul>
+</ul>
+
+<textarea title="commands" name="commands" wrap="soft" class="dataget_textarea"></textarea>
+</ul>
+<br />
+<div class="dataget_submit">
+<input type="reset" title="reset" value="Reset" />
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+<button type="button" onClick="dataRequest()">Submit</button>
+<input type="hidden" id="lang" title="lang" name="lang" value="en" />
+</div>
+<br /><br />
+&#182; Notes<br />
+<ul>
+<li>
+   Be careful that <span class="dataget_impact">50MB</span> is maximum size of one file that you can request.
+   <br />
+   If the size exceeds this limit, please divide the station codes or/and  time length into the smaller pieces.
+   <br />
+   OR select one of 'archival style's not including 'tar' in the above selection.
+</li>
+<li>
+   Please download your requested data within <span class="dataget_impact">an hour after the temporary data file creation.</span>
+   <br />
+   If you request one hour continuous waveform data of all observatories in SEED format with a sampling rate of
+   20Hz (e.g, BH*), data file creation for download may take about
+   <span class="dataget_impact">10 minutes.</span><br />
+   And if you request 12 hours continuous waveform data of all observatories in SEED format with a sampling rate of
+   1Hz (e.g, LH*), data file creation for download may also take about
+   <span class="dataget_impact">10 minutes.</span>
+</li>
+<li>
+   The latest data is from about <span class="dataget_impact">two days ago</span>.
+</li>
+</ul>
+
+</td></tr>
+</table>
+<br />
+<table class="cpr">
+<tr><td colspan="2" class="blk"></td></tr>
+<tr>
+<td rowspan="2" class="nied">
+<a href="http://www.bosai.go.jp/e/" target="_blank">
+<img src="/image/banner/nied_f.gif" border="0" alt="NIED" title="NIED" style="padding:20px;" /></a>
+</td>
+
+<td class="r">
+   <a href="http://www.hinet.bosai.go.jp/?LANG=en" target="_top">
+   &#9654; Hi-net top page</a> &nbsp;
+   <a href="http://www.kyoshin.bosai.go.jp/kyoshin/index_en.html" target="_top">
+   &#9654; K-NET/KiK-net top page</a> &nbsp;
+   <a href="http://www.vnet.bosai.go.jp/" target="_top">
+   &#9654; V-net top page (in Japanese)</a> &emsp;&emsp;
+   <a href="http://www.fnet.bosai.go.jp/faq/?LANG=en" target="_top">A question please click here.</a>
+</td></tr>
+
+<tr><td class="r">
+   Broadband Seismograph Network Laboratory,
+   Network Center for Earthquake,
+   Tsunami and Volcano,<br />
+   National Research Institute for Earth Science and Disaster Resilience.<br />
+   3-1 Tennodai, Tsukuba City, Ibaraki Prefecture, 305-0006, JAPAN
+<br />
+Copyright &copy;
+<span class="cpr_emphasis">N</span>ational Research 
+<span class="cpr_emphasis">I</span>nstitute for 
+<span class="cpr_emphasis">E</span>arth Science and 
+<span class="cpr_emphasis">D</span>isaster Resilience, All rights Reserved.
+</td></tr>
+</table>
+<br /><br />
+</form>
+</body>
+</html>

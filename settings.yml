@@ -1,0 +1,15 @@
+starttime: "2000/01/01,12:00:00"
+endtime: "2000/01/01,13:10:00"
+dataformat: "mseed" #"sac", "text"
+components:
+  - "BHZ"
+  - "BHN"
+  - "BHE"
+
+stationList: provided #all 
+stations: 
+  - ABU
+  # - ADM
+  # - AMM
+
+logfileName: "logfile.txt"
