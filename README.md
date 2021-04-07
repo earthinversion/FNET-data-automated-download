@@ -3,6 +3,7 @@
 - STEP 1: Install webdriver for successful execution of the Fnet script
   We recommend geckodriver for Firefox
   Installation page: https://github.com/mozilla/geckodriver/releases
+  
   __NOTE__: You must have Firefox installed in your system
 
 - STEP 2: add geckodriver location info to the system path (For Mac see ~/.bash_profile, for Linux see ~/.bashrc). For windows user, you can copy the `geckodriver.exe` file to your desired location and add that location to the system environment path.
