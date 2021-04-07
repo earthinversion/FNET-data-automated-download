@@ -25,9 +25,9 @@ conda create --name fnetdata --file requirements.txt
 
 ## Run script
 
-- edit the `settings.yml` file to specify your desired data
 ![Settings Screenshot](docs/Screenshot_settings.png)
 
+- edit the `settings.yml` file to specify your desired data
 - execute the script `fnet_data_download.py` for downloading the Fnet data
 
 __NOTE__: the script need to be executed in proper environment.
